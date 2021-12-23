@@ -12,13 +12,13 @@ export default (state, action) => {
       return {...state, heroList: action.payload, loading: false};
     }
     case 'SET_COMICS': {
-      return {...state, loading: false, comicList: action.payload};
+      return {...state, comicList: action.payload , loading: false};
     }
     case 'SET_FAVORITE_HEROES': {
-      return {...state, loading: false, favoriteHeroes: action.payload};
+      return {...state,  favoriteHeroes: action.payload , loading: false};
     }
     case 'SET_FAVORITE_COMICS': {
-      return {...state, loading: false, favoriteComics: action.payload};
+      return {...state, favoriteComics: action.payload , loading: false};
     }
 
     default:

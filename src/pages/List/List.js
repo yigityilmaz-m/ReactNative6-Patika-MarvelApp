@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import axios from 'axios';
 import CharacterListCard from '../../components/CharacterListCard/CharacterListCard';
-import routes from '../../navigation/routes';
+import routes from '../../Navigation/routes';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import {MarvelContext} from '../../context/MarvelProvider';
 import {getHeroesFromApi, getComicsFromApi} from '../../context/actions';

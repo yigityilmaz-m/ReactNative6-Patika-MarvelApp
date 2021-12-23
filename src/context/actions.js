@@ -1,4 +1,3 @@
-
 export const setLoading = () => ({
   type: 'SET_LOADING',
 });
@@ -22,11 +21,9 @@ export const setFavoriteHeroesToState = favoriteHeroesList => ({
 });
 
 export const setFavoriteComicsToState = favoriteComicsList => ({
-    type: 'SET_FAVORITE_COMICS',
-    payload: favoriteComicsList,
-  });
-
-
+  type: 'SET_FAVORITE_COMICS',
+  payload: favoriteComicsList,
+});
 
 export const getHeroesFromApi = (heroData, dispatch) => {
   const {heroes, heroError, heroLoading} = heroData;
@@ -54,44 +51,49 @@ export const getComicsFromApi = (comicData, dispatch) => {
   }
 };
 
-export const setFavoriteHeroList = (hero, favoriteHeroList ,  dispatch) => {
+export const setFavoriteHeroList = (hero, favoriteHeroList, dispatch) => {
+  dispatch(setLoading());
 
-    dispatch(setLoading());
+  if (favoriteHeroList.length === 0) {
+    let updatedList = [...favoriteHeroList, hero];
+    dispatch(setFavoriteHeroesToState(updatedList));
+    return;
+  }
 
-    if(favoriteHeroList.length === 0) {
-        dispatch(setFavoriteHeroesToState(hero))
-    } else {
-           const favoriteIndex = state.favoriteHeroes.findIndex(heroData => {
-            heroData.id === hero.id;
-              });
-              if(favoriteIndex<0) {
-                  let updatedList = [...favoriteHeroList , hero]
-                  dispatch(setFavoriteHeroesToState(updatedList))
-              } else {
-                    let updatedFavorites = [...state.favoriteHeroes];
-                     updatedFavorites.splice(favoriteIndex, 1);
-                     dispatch(setFavoriteHeroesToState(updatedFavorites))
-              }
-    }
-}
+  const isFavorited = favoriteHeroList.includes(hero);
 
-    export const setFavoriteComicList = (comic, favoriteComicList , dispatch) => {
-
-        dispatch(setLoading());
-    
-        if(favoriteComicList.length === 0) {
-            dispatch(setFavoriteComicsToState(comic))
-        } else {
-               const favoriteIndex = state.favoriteComics.findIndex(comicData => {
-                comicData.id === comic.id;
-                  });
-                  if( favoriteIndex < 0 ) {
-                      let updatedList = [...favoriteComicList , comic]
-                      dispatch(setFavoriteComicsToState(updatedList))
-                  } else {
-                        let updatedFavorites = [...state.favoriteComics];
-                         updatedFavorites.splice(favoriteIndex, 1);
-                         dispatch(setFavoriteComicsToState(updatedFavorites))
-                  }   
-        }
+  if (!isFavorited) {
+    let updatedList = [...favoriteHeroList, hero];
+    dispatch(setFavoriteHeroesToState(updatedList));
+  } else {
+    let updatedFavorites = [...favoriteHeroList];
+    let filtered = updatedFavorites.filter(favoritedHero => {
+      return favoritedHero.id !== hero.id;
+    });
+    dispatch(setFavoriteHeroesToState(filtered));
+  }
 };
+
+
+export const setFavoriteComicList = (comic, favoriteComicList, dispatch) => {
+    dispatch(setLoading());
+  
+    if (favoriteComicList.length === 0) {
+      let updatedList = [...favoriteComicList, comic];
+      dispatch(setFavoriteComicsToState(updatedList));
+      return;
+    }
+  
+    const isFavorited = favoriteComicList.includes(comic);
+    
+    if (!isFavorited) {
+      let updatedList = [...favoriteComicList, comic];
+      dispatch(setFavoriteComicsToState(updatedList));
+    } else {
+      let updatedFavorites = [...favoriteComicList];
+      let filtered = updatedFavorites.filter(favoritedComic => {
+        return favoritedComic.id !== comic.id;
+      });
+      dispatch(setFavoriteComicsToState(filtered));
+    }
+  };

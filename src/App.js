@@ -1,6 +1,6 @@
 import React from 'react';
 import MarvelProvider from './context/MarvelProvider';
-import Navigation from './navigation/Navigation';
+import Navigation from './Navigation/Navigation';
 
 /**
  * Selamlar. Bu ödevde sizden Marvel API'nı kullanarak bir uygulama yapmanız isteniyor.
