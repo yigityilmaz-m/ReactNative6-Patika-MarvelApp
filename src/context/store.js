@@ -1,4 +1,8 @@
 export default {
     heroList: [],
-    heroObject: {},
+    comicList: [],
+    favoriteHeroes: [],
+    favoriteComics: [],
+    errorLog:[],
+    loading:true,
   };

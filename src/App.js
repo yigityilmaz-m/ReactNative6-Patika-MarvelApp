@@ -1,6 +1,6 @@
 import React from 'react';
-import HeroProvider from './context/HeroProvider';
-import Navigation from './navigation/Navigation';
+import MarvelProvider from './context/MarvelProvider';
+import Navigation from './Navigation';
 
 /**
  * Selamlar. Bu ödevde sizden Marvel API'nı kullanarak bir uygulama yapmanız isteniyor.
@@ -21,8 +21,8 @@ import Navigation from './navigation/Navigation';
 
 export default function App() {
   return (
-    <HeroProvider>
+    <MarvelProvider>
       <Navigation/>
-    </HeroProvider>
+    </MarvelProvider>
   );
 }
