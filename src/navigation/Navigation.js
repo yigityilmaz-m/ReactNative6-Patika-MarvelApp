@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator initialRouteName={routes.HERO_STACK}>    
         <Tab.Screen name={routes.FAVORITES_PAGE} component={Favorites} />
         <Tab.Screen name={routes.HERO_STACK} component={HeroStack} />
         <Tab.Screen name={routes.SETTINGS_PAGE} component={Settings} />

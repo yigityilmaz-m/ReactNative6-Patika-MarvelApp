@@ -72,7 +72,6 @@ export const setFavoriteHeroList = (hero, favoriteHeroList ,  dispatch) => {
                      updatedFavorites.splice(favoriteIndex, 1);
                      dispatch(setFavoriteHeroesToState(updatedFavorites))
               }
-        
     }
 }
 
@@ -93,10 +92,6 @@ export const setFavoriteHeroList = (hero, favoriteHeroList ,  dispatch) => {
                         let updatedFavorites = [...state.favoriteComics];
                          updatedFavorites.splice(favoriteIndex, 1);
                          dispatch(setFavoriteComicsToState(updatedFavorites))
-                  }
-            
+                  }   
         }
-
-
-
 };
