@@ -12,7 +12,7 @@ export default function Detail({route}) {
 
 
  function handleFavorites() {
-    setFavoriteHeroList(hero , state.favoriteHeroes, dispatch)
+    setFavoriteHeroList(hero ,  dispatch)
 
  }
   

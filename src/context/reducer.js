@@ -20,6 +20,12 @@ export default (state, action) => {
     case 'SET_FAVORITE_COMICS': {
       return {...state, favoriteComics: action.payload , loading: false};
     }
+    case 'GET_FAVORITE_HEROES':{
+        return {...state.favoriteHeroes}
+    }
+    case 'GET_FAVORITE_COMICS':{
+        return {...state.favoriteComics}
+    }
 
     default:
       return state;

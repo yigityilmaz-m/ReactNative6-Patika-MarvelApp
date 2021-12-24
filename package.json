@@ -20,7 +20,8 @@
     "react-i18next": "^11.15.1",
     "react-native": "0.66.4",
     "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.1"
+    "react-native-screens": "^3.10.1",
+    "sync-storage": "^0.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
