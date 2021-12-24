@@ -8,6 +8,8 @@ import {MarvelContext} from '../../context/MarvelProvider';
 import {getHeroesFromApi, getComicsFromApi} from '../../context/actions';
 import useHeroData from '../../context/data/useHeroData';
 import useComicData from '../../context/data/useComicData';
+import I18n from '../../lang/_i18n'
+
 
 export default function List() {
   const {state, dispatch} = useContext(MarvelContext);
@@ -18,7 +20,6 @@ export default function List() {
   const {fetchHeroes, heroLoading, heroError, heroes} = useHeroData();
 
   function handleHeroSearch() {
-    console.log('yes');
     const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=efcbf1c5b56e5c77cf9bb79cb4a164be&hash=8ad8de2dec0d80436a3ec5414494217c`;
     if (searchValue==='') {
       fetchHeroes();
@@ -39,7 +40,7 @@ export default function List() {
   return (
     <View style={{flex: 1}}>
       <TextInput
-        placeholder="Search a Hero"
+        placeholder={I18n.t("search_placeholder")}
         onChangeText={setSearchValue}
         onSubmitEditing={handleHeroSearch}
         value={searchValue}

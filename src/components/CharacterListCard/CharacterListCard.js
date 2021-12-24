@@ -1,7 +1,10 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import styles from './CharacterList.styles';
+
+
 const CharacterListCard = props => {
+
  
   return (
     <View>

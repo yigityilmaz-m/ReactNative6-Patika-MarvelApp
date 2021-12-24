@@ -1,4 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import I18n from '../lang/_i18n';
+
+
 
 
 // ---------------------Async Storage Get Set methods---------------------------
@@ -36,6 +39,23 @@ const storeComicData = async value => {
     }
   }
 
+  export async function getLanguageFromLocalStorage() {
+    try {
+      let languageData = await AsyncStorage.getItem('@Language')
+      return languageData
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  export async function setLanguageToLocalStorage(value) {
+    try {
+      await AsyncStorage.setItem('@Language', value);
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
 
   // ----------------------------------------------------------------------------
 
@@ -64,6 +84,10 @@ export const setFavoriteHeroesToState = favoriteHeroesList => ({
 export const setFavoriteComicsToState = favoriteComicsList => ({
   type: 'SET_FAVORITE_COMICS',
   payload: favoriteComicsList,
+});
+export const setLanguageToState = (languageData) => ({
+  type: 'SET_LANGUAGE',
+  payload: languageData,
 });
 
 // export const getHeroesFromApi = (heroData, dispatch) => {
@@ -185,6 +209,26 @@ export const getFavoritedComicsList = async  (dispatch) => {
       dispatch(setFavoriteComicsToState(favoriteComics))
   };
   
+export const setLanguage = (language , dispatch) => {
+
+dispatch(setLanguageToState(language))
+setLanguageToLocalStorage(language)
+}
+
+export const getLanguage = async (dispatch) => {
+  let language = await getLanguageFromLocalStorage()
+  if (language === null){
+    language = "system"
+  }
+  dispatch(setLanguageToState(language))
+  console.log(language)
+}
+
+export const textbyLanguage  = (title , language) => {
+
+
+ return  I18n.t(`${title}`, language === 'system' ? {} : {locale: language})
+}
 
 
 

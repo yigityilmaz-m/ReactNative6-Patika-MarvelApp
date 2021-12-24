@@ -3,6 +3,7 @@ import {View, Text, Button} from 'react-native';
 import useComicData from '../../context/data/useComicData';
 import { MarvelContext } from '../../context/MarvelProvider';
 import {setFavoriteHeroList} from '../../context/actions';
+import { textbyLanguage } from '../../context/actions';
 
 export default function Detail({route}) {
   const {hero} = route.params;
@@ -24,7 +25,7 @@ export default function Detail({route}) {
         comics.map((comic, idx) => {
           return <Text key={idx}> {comic.title} </Text>;
         })}
-    <Button title='add to favorites' onPress={handleFavorites}/>
+    <Button title={textbyLanguage('add_to_favorites',state.language)} onPress={handleFavorites}/>
     </View>
   );
 }
