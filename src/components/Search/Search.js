@@ -1,33 +1,26 @@
-import React,{useState} from 'react'
-import { TextInput } from 'react-native'
-import useHeroData from '../../context/data/useHeroData';
-import styles from './Search.styles'
-
-export default function Search() {
-
-    const [searchValue, setSearchValue] = useState("")
-
-    const {fetchHeroes} = useHeroData();
-
-    function handleHeroSearch() {
-        const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=efcbf1c5b56e5c77cf9bb79cb4a164be&hash=8ad8de2dec0d80436a3ec5414494217c`;
-        if (searchValue==='') {
-          fetchHeroes();
-          return;
-        }
-        fetchHeroes(url);
-      }
-    
+import React, {useState} from 'react';
+import {TextInput , View} from 'react-native';
+import styles from './Search.styles';
+import I18n from '../../lang/_i18n'
 
 
-    return (
-      <View style = {styles.container}>
-        <TextInput
-        placeholder="Search a Hero"
-        onChangeText={setSearchValue}
-        onSubmitEditing={handleHeroSearch}
+export default function Search({setSearchValue ,  searchValue  , handleHeroSearch}) {
+
+  const handleChangeText = (text) => {
+    setSearchValue(text)
+  }
+  const handleSumbmit = () => {
+    handleHeroSearch()
+  }
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        placeholder={I18n.t('search_placeholder')}
+        onChangeText={handleChangeText}
+        onSubmitEditing={handleSumbmit}
         value={searchValue}
       />
-      </View>
-    )
+    </View>
+  );
 }

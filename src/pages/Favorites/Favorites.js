@@ -1,22 +1,30 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, FlatList} from 'react-native';
 import {MarvelContext} from '../../context/MarvelProvider';
-import {getFavoritedHeroesList} from '../../context/actions';
+import LottieView from 'lottie-react-native';
+import styles from './Favorites.styles';
 
 export default function Favorites() {
+  const {state} = useContext(MarvelContext);
 
-  const {state, dispatch} = useContext(MarvelContext);
-
-  useEffect(() => {
-    getFavoritedHeroesList(dispatch)
-  }, []);
+  const renderFavorite = ({item}) => <Text>{item.name}</Text>;
 
   return (
-    <View>
-      {
-        state.favoriteHeroes.map((hero, idx) => {
-          return <Text key={idx}>{hero.name}</Text>;
-        })}
+    <View style={styles.container}>
+      {state.favoriteHeroes.length === 0 ? (
+        <LottieView
+          source={require('../../assets/empty.json')}
+          autoPlay
+          loop
+        />
+      ) : (
+        <FlatList
+        style={styles.container}
+          data={state.favoriteHeroes}
+          renderItem={renderFavorite}
+          keyExtractor={item => item.id}
+        />
+      )}
     </View>
   );
 }

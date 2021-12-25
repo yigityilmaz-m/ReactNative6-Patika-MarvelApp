@@ -1,27 +1,23 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, FlatList, TouchableOpacity, TextInput} from 'react-native';
-import axios from 'axios';
+import React, {useState} from 'react';
+import {View, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import CharacterListCard from '../../components/CharacterListCard/CharacterListCard';
 import routes from '../../Navigation/routes';
-import {useNavigation, useRoute} from '@react-navigation/core';
-import {MarvelContext} from '../../context/MarvelProvider';
-import {getHeroesFromApi, getComicsFromApi} from '../../context/actions';
+import {useNavigation} from '@react-navigation/core';
 import useHeroData from '../../context/data/useHeroData';
-import useComicData from '../../context/data/useComicData';
-import I18n from '../../lang/_i18n'
-
+import I18n from '../../lang/_i18n';
+import Search from './../../components/Search/Search';
+import LottieView from 'lottie-react-native';
 
 export default function List() {
-  const {state, dispatch} = useContext(MarvelContext);
   const navigation = useNavigation();
-  
+
   const [searchValue, setSearchValue] = useState('');
 
-  const {fetchHeroes, heroLoading, heroError, heroes} = useHeroData();
+  const {fetchHeroes, heroLoading, heroes} = useHeroData();
 
   function handleHeroSearch() {
     const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=efcbf1c5b56e5c77cf9bb79cb4a164be&hash=8ad8de2dec0d80436a3ec5414494217c`;
-    if (searchValue==='') {
+    if (searchValue === '') {
       fetchHeroes();
       return;
     }
@@ -39,19 +35,28 @@ export default function List() {
 
   return (
     <View style={{flex: 1}}>
-      <TextInput
-        placeholder={I18n.t("search_placeholder")}
-        onChangeText={setSearchValue}
-        onSubmitEditing={handleHeroSearch}
-        value={searchValue}
-      />
-      {!heroLoading && (
-        <FlatList
-          style={{flex: 10}}
-          style={{backgroundColor: 'bdbdbd'}}
-          data={heroes}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
+      {!heroLoading ? (
+        <View style={{flex: 1}}>
+          <TextInput
+            placeholder={I18n.t('search_placeholder')}
+            onChangeText={setSearchValue}
+            onSubmitEditing={handleHeroSearch}
+            value={searchValue}
+          />
+          <FlatList
+            style={{flex: 10}}
+            style={{backgroundColor: 'bdbdbd'}}
+            data={heroes}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        </View>
+      ) : (
+        <LottieView
+          source={require('../../assets/iron-man.json')}
+          autoPlay
+          loop
+        
         />
       )}
     </View>

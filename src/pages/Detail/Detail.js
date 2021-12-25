@@ -9,7 +9,7 @@ export default function Detail({route}) {
   const {hero} = route.params;
   const {state,dispatch} = useContext(MarvelContext);
   const url = `https://gateway.marvel.com:443/v1/public/comics?characters=${hero.id}&limit=10&ts=100&apikey=efcbf1c5b56e5c77cf9bb79cb4a164be&hash=8ad8de2dec0d80436a3ec5414494217c`;
-  const {comics, comicError, comicLoading} = useComicData(url);
+  const {comics, comicLoading} = useComicData(url);
 
 
  function handleFavorites() {

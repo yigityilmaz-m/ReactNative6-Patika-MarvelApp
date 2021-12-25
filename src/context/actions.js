@@ -1,21 +1,27 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import I18n from '../lang/_i18n';
 
+export const setErrorData = error => ({
+  type: 'SET_HEROES',
+  payload: error,
+});
+
+
 // ---------------------Async Storage Get Set methods---------------------------
 const storeHeroData = async value => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem('@FavoritedHeroes', jsonValue);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    setErrorData(error);
   }
 };
 export async function getHeroData() {
   try {
     let jsonValue = await AsyncStorage.getItem('@FavoritedHeroes');
     return jsonValue === null ? null : JSON.parse(jsonValue);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    setErrorData(error);
   }
 }
 
@@ -23,16 +29,16 @@ const storeComicData = async value => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem('@FavoritedComics', jsonValue);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    setErrorData(error);
   }
 };
 export async function getComicData() {
   try {
     let jsonValue = await AsyncStorage.getItem('@FavoritedComics');
     return jsonValue === null ? null : JSON.parse(jsonValue);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    setErrorData(error);
   }
 }
 
@@ -41,7 +47,7 @@ export async function getLanguageFromLocalStorage() {
     let languageData = await AsyncStorage.getItem('@Language');
     return languageData;
   } catch (error) {
-    console.log(error);
+    setErrorData(error);
   }
 }
 
@@ -49,7 +55,7 @@ export async function setLanguageToLocalStorage(value) {
   try {
     await AsyncStorage.setItem('@Language', value);
   } catch (error) {
-    console.log(error);
+    setErrorData(error);
   }
 }
 
@@ -58,7 +64,7 @@ export async function getModeFromLocalStorage() {
     let modeData = await AsyncStorage.getItem('@Mode');
     return modeData;
   } catch (error) {
-    console.log(error);
+    setErrorData(error);
   }
 }
 
@@ -66,7 +72,7 @@ export async function setModeToLocalStorage(value) {
   try {
     await AsyncStorage.setItem('@Mode', value);
   } catch (error) {
-    console.log(error);
+    setErrorData(error);
   }
 }
 
@@ -74,10 +80,6 @@ export async function setModeToLocalStorage(value) {
 
 export const setLoading = () => ({
   type: 'SET_LOADING',
-});
-export const setErrorData = error => ({
-  type: 'SET_HEROES',
-  payload: error,
 });
 
 export const setHeroData = heroList => ({

@@ -12,7 +12,7 @@ import routes from './routes';
 import I18n from '../lang/_i18n';
 import {useColorScheme} from 'react-native';
 import {MarvelContext} from '../context/MarvelProvider';
-import {getLanguage, textbyLanguage , setMode} from '../context/actions';
+import {getLanguage, textbyLanguage , setMode , getFavoritedHeroesList} from '../context/actions';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +24,7 @@ export default function Navigation() {
   useEffect(() => {
     getLanguage(dispatch);
     setMode(scheme , dispatch)
+    getFavoritedHeroesList(dispatch);
   }, []);
 
   return (
