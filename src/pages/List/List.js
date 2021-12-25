@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState , useContext} from 'react';
 import {View, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import CharacterListCard from '../../components/CharacterCards/CharacterListCard';
 import routes from '../../Navigation/routes';
@@ -7,9 +7,12 @@ import useHeroData from '../../context/data/useHeroData';
 import I18n from '../../lang/_i18n';
 import Search from './../../components/Search/Search';
 import LottieView from 'lottie-react-native';
-
+import styles from './List.styles'
+import { MarvelContext } from './../../context/MarvelProvider';
 export default function List() {
   const navigation = useNavigation();
+
+  const {state} = useContext(MarvelContext)
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -25,25 +28,25 @@ export default function List() {
   }
 
   const renderItem = ({item}) => (
-      <TouchableOpacity style={{padding:0}}
+      <TouchableOpacity style={styles.cardContainerStyles}
         onPress={() => navigation.navigate(routes.DETAIL_PAGE, {hero: item})}>
-        <CharacterListCard hero={item} />
+        <CharacterListCard hero={item} mode={state.mode}/>
       </TouchableOpacity>
   );
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       {!heroLoading ? (
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
           <TextInput
+          style={styles.searchStyles}
             placeholder={I18n.t('search_placeholder')}
             onChangeText={setSearchValue}
             onSubmitEditing={handleHeroSearch}
             value={searchValue}
           />
           <FlatList
-            style={{flex: 10}}
-            style={{backgroundColor: 'bdbdbd'}}
+            style={styles.flatListStyles}
             data={heroes}
             renderItem={renderItem}
             keyExtractor={item => item.id}

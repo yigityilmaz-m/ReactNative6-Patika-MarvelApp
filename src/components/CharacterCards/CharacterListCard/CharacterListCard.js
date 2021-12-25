@@ -1,21 +1,36 @@
 import React, {useState} from 'react';
-
-import {Card} from 'react-native-elements';
+import {Image, View, Text} from 'react-native';
 import styles from './CharacterList.styles';
 
-const CharacterListCard = ({hero}) => {
-  const [heroImageUrl , setHeroImageUrl] = useState(`${hero.thumbnail.path+"."+hero.thumbnail.extension}`)
+const CharacterListCard = ({hero, mode}) => {
+
+  const [heroImageUrl] = useState(
+    `${hero.thumbnail.path + '.' + hero.thumbnail.extension}`,
+  );
+
+
+
 
   return (
-    <Card style={styles.cardStyle}>
-      <Card.Image
-      style={styles.imageStyle}
-       source={{
-        uri:
-        heroImageUrl,
-      }}/>
-      <Card.Title style={styles.titleStyle}>{hero.name}</Card.Title>
-    </Card>
+    // <Card style={styles.cardStyle} isDark={mode==="dark"?true:false}>
+    //   <CardImage
+    //    source={{
+    //     uri:
+    //     heroImageUrl,
+    //   }}
+    //   style={styles.imageStyle}
+    //   />
+    //   <CardTitle style={styles.titleStyle}
+    //   title={hero.name}
+    // />
+    // </Card>
+
+    <View style={styles[mode].cardStyle}>
+      <Image style={styles[mode].imageStyle} source={{uri: heroImageUrl}} />
+      <View style={styles[mode].titleStyle}>
+        <Text style={styles[mode].textStyle}>{hero.name}</Text>
+      </View>
+    </View>
   );
 };
 
