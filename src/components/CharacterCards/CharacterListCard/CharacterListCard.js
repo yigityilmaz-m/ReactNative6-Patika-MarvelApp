@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Image, View, Text} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import styles from './CharacterList.styles';
+import { setFavoriteHeroList } from './../../../context/actions';
 
 const CharacterListCard = ({hero, mode}) => {
 
@@ -8,22 +10,10 @@ const CharacterListCard = ({hero, mode}) => {
     `${hero.thumbnail.path + '.' + hero.thumbnail.extension}`,
   );
 
-
-
+ 
 
   return (
-    // <Card style={styles.cardStyle} isDark={mode==="dark"?true:false}>
-    //   <CardImage
-    //    source={{
-    //     uri:
-    //     heroImageUrl,
-    //   }}
-    //   style={styles.imageStyle}
-    //   />
-    //   <CardTitle style={styles.titleStyle}
-    //   title={hero.name}
-    // />
-    // </Card>
+
 
     <View style={styles[mode].cardStyle}>
       <Image style={styles[mode].imageStyle} source={{uri: heroImageUrl}} />
