@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, Switch, StyleSheet} from 'react-native';
+import {View, Switch, Text} from 'react-native';
 import styles from './ModeSwitch.styles';
 import {MarvelContext} from '../../context/MarvelProvider';
 import {setMode} from '../../context/actions';
@@ -28,6 +28,7 @@ export default function ModeSwitch() {
 
   return (
     <View style={styles.container}>
+      <Text>{modeData==="dark"? "Light Mode":"Dark Mode"}</Text>
       <Switch
         trackColor={{false: '#767577', true: '#81b0ff'}}
         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
