@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import ModeSwitch from '../../components/ModeSwitch'
+import ModeSwitch from '../../components/Settings/ModeSwitch'
 import LanguageSelection from '../../components/Settings/LanguageSelection/LanguageSelection'
 import styles from './Settings.styles'
 

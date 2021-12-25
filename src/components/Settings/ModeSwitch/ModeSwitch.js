@@ -1,8 +1,8 @@
 import React, {useState, useContext} from 'react';
 import {View, Switch, Text} from 'react-native';
 import styles from './ModeSwitch.styles';
-import {MarvelContext} from '../../context/MarvelProvider';
-import {setMode} from '../../context/actions';
+import {MarvelContext} from '../../../context/MarvelProvider';
+import {setMode} from '../../../context/actions';
 import {useColorScheme} from 'react-native';
 
 export default function ModeSwitch() {

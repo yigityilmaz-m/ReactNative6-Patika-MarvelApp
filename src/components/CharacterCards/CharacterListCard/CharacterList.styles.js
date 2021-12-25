@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  
   container: {
     backgroundColor: '#C5CBE3',
     margin: 10,
@@ -53,4 +54,28 @@ export default StyleSheet.create({
     marginHorizontal: 20,
     paddingLeft: 5,
   },
+  imageStyle: {
+    flex:5,
+    padding: 0,
+    margin:0,
+    width: '110%',
+    height : 300,
+    
+  },
+  cardStyle: {
+    flex:1,
+    padding: 0,
+    margin : 0,
+    alignItems:'center',
+    justifyContent:'center'
+
+
+
+  },
+  titleStyle: {
+    flex:1,
+    alignItems:'center',
+    fontSize: 25,
+    fontWeight: "bold",
+  }
 });

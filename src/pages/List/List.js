@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, FlatList, TouchableOpacity, TextInput} from 'react-native';
-import CharacterListCard from '../../components/CharacterListCard/CharacterListCard';
+import CharacterListCard from '../../components/CharacterCards/CharacterListCard';
 import routes from '../../Navigation/routes';
 import {useNavigation} from '@react-navigation/core';
 import useHeroData from '../../context/data/useHeroData';
@@ -25,12 +25,10 @@ export default function List() {
   }
 
   const renderItem = ({item}) => (
-    <View>
-      <TouchableOpacity
+      <TouchableOpacity style={{padding:0}}
         onPress={() => navigation.navigate(routes.DETAIL_PAGE, {hero: item})}>
-        <CharacterListCard name={item.name} />
+        <CharacterListCard hero={item} />
       </TouchableOpacity>
-    </View>
   );
 
   return (
