@@ -5,5 +5,6 @@ export default {
     favoriteComics: [],
     errorLog:[],
     loading:true,
-    language:"system"
+    language:"system",
+    mode:"",
   };

@@ -1,9 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import I18n from '../lang/_i18n';
 
-
-
-
 // ---------------------Async Storage Get Set methods---------------------------
 const storeHeroData = async value => {
   try {
@@ -23,41 +20,57 @@ export async function getHeroData() {
 }
 
 const storeComicData = async value => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('@FavoritedComics', jsonValue);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  export async function getComicData() {
-    try {
-      let jsonValue = await AsyncStorage.getItem('@FavoritedComics');
-      return jsonValue === null ? null : JSON.parse(jsonValue);
-    } catch (e) {
-      console.log(e);
-    }
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('@FavoritedComics', jsonValue);
+  } catch (e) {
+    console.log(e);
   }
-
-  export async function getLanguageFromLocalStorage() {
-    try {
-      let languageData = await AsyncStorage.getItem('@Language')
-      return languageData
-    } catch (error) {
-      console.log(error);
-    }
+};
+export async function getComicData() {
+  try {
+    let jsonValue = await AsyncStorage.getItem('@FavoritedComics');
+    return jsonValue === null ? null : JSON.parse(jsonValue);
+  } catch (e) {
+    console.log(e);
   }
+}
 
-  export async function setLanguageToLocalStorage(value) {
-    try {
-      await AsyncStorage.setItem('@Language', value);
-    } catch (error) {
-      console.log(error);
-      
-    }
+export async function getLanguageFromLocalStorage() {
+  try {
+    let languageData = await AsyncStorage.getItem('@Language');
+    return languageData;
+  } catch (error) {
+    console.log(error);
   }
+}
 
-  // ----------------------------------------------------------------------------
+export async function setLanguageToLocalStorage(value) {
+  try {
+    await AsyncStorage.setItem('@Language', value);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getModeFromLocalStorage() {
+  try {
+    let modeData = await AsyncStorage.getItem('@Mode');
+    return modeData;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function setModeToLocalStorage(value) {
+  try {
+    await AsyncStorage.setItem('@Mode', value);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ----------------------------------------------------------------------------
 
 export const setLoading = () => ({
   type: 'SET_LOADING',
@@ -85,9 +98,13 @@ export const setFavoriteComicsToState = favoriteComicsList => ({
   type: 'SET_FAVORITE_COMICS',
   payload: favoriteComicsList,
 });
-export const setLanguageToState = (languageData) => ({
+export const setLanguageToState = languageData => ({
   type: 'SET_LANGUAGE',
   payload: languageData,
+});
+export const setModeToState = modeData => ({
+  type: 'SET_MODE',
+  payload: modeData,
 });
 
 // export const getHeroesFromApi = (heroData, dispatch) => {
@@ -150,85 +167,86 @@ export const setFavoriteHeroList = (hero, dispatch) => {
   });
 };
 
-
 export const setFavoriteComicList = (comic, dispatch) => {
-    dispatch(setLoading());
-    let favoriteComicList = [];
-    getComicData().then(data => {
-      favoriteComicList = data;
-  
-      if (favoriteComicList.length === 0) {
-        let updatedList = [comic];
+  dispatch(setLoading());
+  let favoriteComicList = [];
+  getComicData().then(data => {
+    favoriteComicList = data;
+
+    if (favoriteComicList.length === 0) {
+      let updatedList = [comic];
+      dispatch(setFavoriteComicsToState(updatedList));
+      storeComicData(updatedList);
+      return;
+    }
+
+    if (favoriteComicList.length > 0) {
+      const isFavorited = favoriteComicList.findIndex(
+        favoriteComic => favoriteComic.id === comic.id,
+      );
+
+      if (isFavorited < 0) {
+        let updatedList = [...favoriteComicList, comic];
         dispatch(setFavoriteComicsToState(updatedList));
         storeComicData(updatedList);
-        return;
+      } else {
+        let updatedFavorites = [...favoriteComicList];
+        let filtered = updatedFavorites.filter(favoritedComic => {
+          return favoritedComic.id !== hero.id;
+        });
+        dispatch(setFavoritecomicsToState(filtered));
+        storeComicData(filtered);
       }
-  
-      if (favoriteComicList.length > 0) {
-        const isFavorited = favoriteComicList.findIndex(
-          favoriteComic => favoriteComic.id === comic.id,
-        );
-  
-        if (isFavorited < 0) {
-          let updatedList = [...favoriteComicList, comic];
-          dispatch(setFavoriteComicsToState(updatedList));
-          storeComicData(updatedList);
-        } else {
-          let updatedFavorites = [...favoriteComicList];
-          let filtered = updatedFavorites.filter(favoritedComic => {
-            return favoritedComic.id !== hero.id;
-          });
-          dispatch(setFavoritecomicsToState(filtered));
-          storeComicData(filtered);
-        }
-      }
-    });
-  };
+    }
+  });
+};
 
-
-
-
-
-export const getFavoritedHeroesList = async  (dispatch) => {
+export const getFavoritedHeroesList = async dispatch => {
   let favoriteHeroes = [];
 
   let localStorageData = await getHeroData();
   localStorageData === null
     ? (favoriteHeroes = [])
     : (favoriteHeroes = localStorageData);
-    dispatch(setFavoriteHeroesToState(favoriteHeroes))
+  dispatch(setFavoriteHeroesToState(favoriteHeroes));
 };
 
-export const getFavoritedComicsList = async  (dispatch) => {
-    let favoriteComics = [];
-  
-    let localStorageData = await getComicData();
-    localStorageData === null
-      ? (favoriteComics = [])
-      : (favoriteComics = localStorageData);
-      dispatch(setFavoriteComicsToState(favoriteComics))
-  };
-  
-export const setLanguage = (language , dispatch) => {
+export const getFavoritedComicsList = async dispatch => {
+  let favoriteComics = [];
 
-dispatch(setLanguageToState(language))
-setLanguageToLocalStorage(language)
-}
+  let localStorageData = await getComicData();
+  localStorageData === null
+    ? (favoriteComics = [])
+    : (favoriteComics = localStorageData);
+  dispatch(setFavoriteComicsToState(favoriteComics));
+};
 
-export const getLanguage = async (dispatch) => {
-  let language = await getLanguageFromLocalStorage()
-  if (language === null){
-    language = "system"
+export const setLanguage = (language, dispatch) => {
+  dispatch(setLanguageToState(language));
+  setLanguageToLocalStorage(language);
+};
+
+export const getLanguage = async dispatch => {
+  let language = await getLanguageFromLocalStorage();
+  if (language === null) {
+    language = 'system';
   }
-  dispatch(setLanguageToState(language))
-  console.log(language)
-}
+  dispatch(setLanguageToState(language));
+};
 
-export const textbyLanguage  = (title , language) => {
+export const textbyLanguage = (title, language) => {
+  return I18n.t(`${title}`, language === 'system' ? {} : {locale: language});
+};
 
+export const setMode = (mode, dispatch) => {
+  dispatch(setModeToState(mode));
+  setModeToLocalStorage(mode);
+};
 
- return  I18n.t(`${title}`, language === 'system' ? {} : {locale: language})
-}
-
-
-
+export const getMode = async (systemMode, dispatch) => {
+  let mode = await getModeFromLocalStorage();
+  if (mode === null) {
+    mode = systemMode;
+  }
+  dispatch(setModeToState(mode));
+};

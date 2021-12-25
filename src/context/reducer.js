@@ -29,6 +29,9 @@ export default (state, action) => {
     case 'SET_LANGUAGE': {
       return {...state, language: action.payload}
     }
+    case 'SET_MODE' :  {
+      return {...state, mode: action.payload}
+    }
 
     default:
       return state;

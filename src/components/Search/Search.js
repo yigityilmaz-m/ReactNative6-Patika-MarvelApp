@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { TextInput } from 'react-native'
 import useHeroData from '../../context/data/useHeroData';
+import styles from './Search.styles'
 
 export default function Search() {
 
@@ -20,11 +21,13 @@ export default function Search() {
 
 
     return (
+      <View style = {styles.container}>
         <TextInput
         placeholder="Search a Hero"
         onChangeText={setSearchValue}
         onSubmitEditing={handleHeroSearch}
         value={searchValue}
       />
+      </View>
     )
 }

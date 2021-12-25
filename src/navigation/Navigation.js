@@ -12,7 +12,7 @@ import routes from './routes';
 import I18n from '../lang/_i18n';
 import {useColorScheme} from 'react-native';
 import {MarvelContext} from '../context/MarvelProvider';
-import {getLanguage, textbyLanguage} from '../context/actions';
+import {getLanguage, textbyLanguage , setMode} from '../context/actions';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,12 +20,14 @@ export default function Navigation() {
   const {state, dispatch} = useContext(MarvelContext);
 
   const scheme = useColorScheme();
+
   useEffect(() => {
     getLanguage(dispatch);
+    setMode(scheme , dispatch)
   }, []);
 
   return (
-    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer theme={state.mode === 'dark' ? DarkTheme : DefaultTheme}>
       <Tab.Navigator
         initialRouteName={routes.HERO_STACK}>
         <Tab.Screen
