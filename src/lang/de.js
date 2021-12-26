@@ -10,5 +10,6 @@ const de = {
   see_details: 'Siehe Einzelheiten',
   light_mode: 'Lichtmodus',
   dark_mode: 'Dunkelmodus',
+  comic_detail: 'Comic Detailen',
 };
 export default de;

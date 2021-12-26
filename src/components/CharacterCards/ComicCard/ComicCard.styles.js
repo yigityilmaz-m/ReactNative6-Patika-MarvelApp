@@ -7,6 +7,9 @@ export default StyleSheet.create({
     width: 200,
 
   },
+  flexStyle: {
+    flex:1,
+  }, 
   image: {
     flex: 1,
     backgroundColor:'#2F2F2F'

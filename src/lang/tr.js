@@ -10,5 +10,6 @@ const tr = {
   see_details: 'Detaylara Git',
   light_mode: 'Aydınlık Mod',
   dark_mode: 'Karanlık Mod',
+  comic_detail: 'Çizgi Roman',
 };
 export default tr;
