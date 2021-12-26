@@ -7,5 +7,6 @@ const tr = {
   search_placeholder: 'Kahraman Ara',
   select_language: 'Dil Seçiniz',
   add_to_favorites: 'Favorilere Ekle',
+  see_details: 'Detaylara Git',
 };
 export default tr;

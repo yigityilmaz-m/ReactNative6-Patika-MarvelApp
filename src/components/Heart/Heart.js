@@ -10,7 +10,7 @@ export default function Heart({hero} ) {
   const {state , dispatch} = useContext(MarvelContext)
 
     const favoritedHero =
-    state.favoriteHeroes.length > 0 ? state.favoriteHeroes.includes(hero) : false;
+    state.favoriteHeroes.length > 0 ? (state.favoriteHeroes.includes(hero)) : false;
 
     const [isFavorited , setIsFavorited] = useState(favoritedHero);
 

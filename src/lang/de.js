@@ -6,6 +6,7 @@ const de = {
   hero_detail: 'Heldendetails',
   search_placeholder: 'Suche einen Helden',
   select_language: 'Sprache auswählen',
-  add_to_favorites: 'Zu den Favoriten hinzufügen'
+  add_to_favorites: 'Zu den Favoriten hinzufügen',
+  see_details: 'Siehe Einzelheiten',
 };
 export default de;

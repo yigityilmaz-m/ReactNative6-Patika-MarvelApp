@@ -3,7 +3,7 @@ import {Image, View, Text} from 'react-native';
 import styles from './FavoriteCard.styles';
 import Heart from '../../Heart'
 
-export default function FavoriteCard({hero , mode , favoriteHeroes}) {
+export default function FavoriteCard({hero , mode }) {
 
     const [heroImageUrl] = useState(
         `${hero.thumbnail.path + '.' + hero.thumbnail.extension}`,
