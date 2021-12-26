@@ -240,6 +240,10 @@ export const textbyLanguage = (title, language) => {
   return I18n.t(`${title}`, language === 'system' ? {} : {locale: language});
 };
 
+export const isFavorited = (hero , favoritedHeroes) => {
+  return favoritedHeroes.length > 0  ? (favoritedHeroes.findIndex((favHero)=> (favHero.id === hero.id))>=0?true:false):false
+};
+
 export const setMode = (mode, dispatch) => {
   dispatch(setModeToState(mode));
   setModeToLocalStorage(mode);

@@ -30,7 +30,13 @@ export default function Detail({route}) {
       }
     }, [url]);
 
-    return <Button color={state.mode==="dark"?"#841584":"#FCBF49"} title={children} onPress={handlePress} />;
+    return (
+      <Button
+        color={state.mode === 'dark' ? '#841584' : '#FCBF49'}
+        title={children}
+        onPress={handlePress}
+      />
+    );
   };
   return (
     <View style={styles[state.mode].container}>
@@ -48,12 +54,12 @@ export default function Detail({route}) {
       <OpenURLButton url={detailsURL}>
         {textbyLanguage('see_details', state.language)}
       </OpenURLButton>
-      <ScrollView horizontal style={{flex:1}}>
-      {!comicLoading &&
-        comics.map((comic, idx) => {
-          return <ComicCard key={idx} comic = {comic}/>;
-        })}
-        </ScrollView>
+      <ScrollView horizontal style={{flex: 1}}>
+        {!comicLoading &&
+          comics.map((comic, idx) => {
+            return <ComicCard key={idx} comic={comic} />;
+          })}
+      </ScrollView>
     </View>
   );
 }
