@@ -9,6 +9,7 @@ import Search from './../../components/Search/Search';
 import LottieView from 'lottie-react-native';
 import styles from './List.styles';
 import {MarvelContext} from './../../context/MarvelProvider';
+
 export default function List() {
   const navigation = useNavigation();
 
@@ -18,14 +19,6 @@ export default function List() {
 
   const {fetchHeroes, heroLoading, heroes} = useHeroData();
 
-  // function handleHeroSearch() {
-  //   const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=19f6801ac64190c329f1fa52d50debb9&hash=10057e70e0a2ae9b702782a71cd5cf8a`;
-  //   if (searchValue === '') {
-  //     fetchHeroes();
-  //     return;
-  //   }
-  //   fetchHeroes(url);
-  // }
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -40,7 +33,6 @@ export default function List() {
       {!heroLoading ? (
         <View style={styles.container}>
           <Search
-          
           fetchHeroes={fetchHeroes}
           />
          

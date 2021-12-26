@@ -24,14 +24,14 @@ export default function Navigation() {
 
   useEffect(() => {
     getLanguage(dispatch);
-    setMode(scheme , dispatch)
+    setMode(scheme, dispatch);
     getFavoritedHeroesList(dispatch);
   }, []);
 
   return (
-    <NavigationContainer theme={state.mode === 'dark' ? DarkTheme : DefaultTheme}>
-      <Tab.Navigator
-        initialRouteName={routes.HERO_STACK}>
+    <NavigationContainer
+      theme={state.mode === 'dark' ? DarkTheme : DefaultTheme}>
+      <Tab.Navigator initialRouteName={routes.HERO_STACK}>
         <Tab.Screen
           name={routes.FAVORITES_PAGE}
           component={Favorites}
@@ -53,7 +53,6 @@ export default function Navigation() {
           options={{ title: textbyLanguage(routes.SETTINGS_PAGE , state.language)  ,  tabBarIcon:()=>(  
             <Icon name="settings" color={state.mode === 'dark' ? "#eee" : "#2f2f2f"}  size={25}/>  
         ) }}
-
         />
       </Tab.Navigator>
     </NavigationContainer>

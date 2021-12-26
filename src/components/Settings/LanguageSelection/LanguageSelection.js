@@ -1,6 +1,6 @@
-import React, {useState, useEffect , useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { View ,  Text } from 'react-native';
+import {View, Text} from 'react-native';
 import I18n from '../../../lang/_i18n';
 import { MarvelContext } from '../../../context/MarvelProvider';
 import { setLanguage } from '../../../context/actions';
@@ -39,6 +39,6 @@ export default function LanguageSelection() {
         setItems={setItems}
         onChangeValue={handleChangevalue}
       />
-      </View>
-    )
+    </View>
+  );
 }
