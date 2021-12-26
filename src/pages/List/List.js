@@ -1,10 +1,9 @@
 import React, {useState, useContext} from 'react';
-import {View, FlatList, TouchableOpacity, TextInput} from 'react-native';
+import {View, FlatList, TouchableOpacity} from 'react-native';
 import CharacterListCard from '../../components/CharacterCards/CharacterListCard';
 import routes from '../../Navigation/routes';
 import {useNavigation} from '@react-navigation/core';
 import useHeroData from '../../context/data/useHeroData';
-import I18n from '../../lang/_i18n';
 import Search from './../../components/Search/Search';
 import LottieView from 'lottie-react-native';
 import styles from './List.styles';
@@ -15,7 +14,6 @@ export default function List() {
 
   const {state} = useContext(MarvelContext);
 
-  const [searchValue, setSearchValue] = useState('');
 
   const {fetchHeroes, heroLoading, heroes} = useHeroData();
 

@@ -7,8 +7,10 @@ export default StyleSheet.create({
             marginVertical:10,
         },
         textInputStyle: {
+            borderRadius: 5,
+            backgroundColor: '#D1D2D3',
             color:'#2f2f2f',
-            marginLeft:5,
+            marginHorizontal:10,
         }
     },
     dark: {
@@ -16,9 +18,10 @@ export default StyleSheet.create({
             marginVertical:10,
         },
         textInputStyle: {
-            color:'#fff',
-            marginLeft:5,
-
+            borderRadius: 5,
+            backgroundColor: '#1E2023',
+            color:'#bdbdbd',
+            marginHorizontal:10,
         }
     }
     

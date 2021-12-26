@@ -1,5 +1,3 @@
-import I18n from '../lang/_i18n';
-import { textbyLanguage } from '../context/actions';
 
 
 export default {

@@ -9,7 +9,7 @@ import ComicCard from './../../components/CharacterCards/ComicCard';
 
 export default function Detail({route}) {
   const {hero} = route.params;
-  const {state, dispatch} = useContext(MarvelContext);
+  const {state} = useContext(MarvelContext);
   const url = `https://gateway.marvel.com:443/v1/public/comics?characters=${hero.id}&limit=10&ts=100&apikey=19f6801ac64190c329f1fa52d50debb9&hash=10057e70e0a2ae9b702782a71cd5cf8a`;
   const {comics, comicLoading} = useComicData(url);
 

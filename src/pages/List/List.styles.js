@@ -10,18 +10,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
 
-  dark: {
-    searchStyles: {
-      margin: 10,
-      color: '#EEEEEE',
-    },
-  },
-  light: {
-    searchStyles: {
-      margin: 10,
-      color: '#2F2F2F',
-    },
-  },
+
 
   cardContainerStyles: {
     flex: 1,

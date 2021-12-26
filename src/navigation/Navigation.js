@@ -9,7 +9,6 @@ import HeroStack from './HeroStack';
 import Favorites from '../pages/Favorites';
 import Settings from '../pages/Settings';
 import routes from './routes';
-import I18n from '../lang/_i18n';
 import {useColorScheme} from 'react-native';
 import {MarvelContext} from '../context/MarvelProvider';
 import {getLanguage, textbyLanguage , setMode , getFavoritedHeroesList} from '../context/actions';

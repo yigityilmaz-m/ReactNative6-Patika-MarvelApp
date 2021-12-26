@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {MarvelContext} from '../../context/MarvelProvider';
 import LottieView from 'lottie-react-native';
 import styles from './Favorites.styles';
