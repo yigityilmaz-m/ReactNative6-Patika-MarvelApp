@@ -12,7 +12,7 @@ export default function Heart({hero}) {
 
   const handleFavorite = () => {
     setFavoriteHeroList(hero, dispatch);
-    setIsFavorited(prevState => !prevState);
+    setIsFavoritedHero(prevState => !prevState);
   };
   useEffect(() => {
     setIsFavoritedHero(isFavorited(hero, state.favoriteHeroes));
