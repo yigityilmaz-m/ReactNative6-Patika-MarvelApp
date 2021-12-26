@@ -2,15 +2,14 @@ import React, {useState, useContext} from 'react';
 import {TextInput, View} from 'react-native';
 import styles from './Search.styles';
 import {textbyLanguage} from './../../context/actions';
-import { MarvelContext } from '../../context/MarvelProvider';
+import {MarvelContext} from '../../context/MarvelProvider';
 
-
-export default function Search({ fetchHeroes}) {
+export default function Search({fetchHeroes}) {
   const [keyword, setKeyword] = useState('');
-  const {state} = useContext(MarvelContext)
+  const {state} = useContext(MarvelContext);
 
   const handleSubmit = () => {
-    handleHeroSearch()
+    handleHeroSearch();
   };
 
   function handleHeroSearch() {
@@ -25,8 +24,10 @@ export default function Search({ fetchHeroes}) {
   return (
     <View style={styles[state.mode].container}>
       <TextInput
-      style={styles[state.mode].textInputStyle}
+        style={styles[state.mode].textInputStyle}
         placeholder={textbyLanguage('search_placeholder', state.language)}
+        placeholderTextColor={state.mode==="dark"? '#bdbdbd': '#2f2f2f'}
+
         value={keyword}
         onChangeText={setKeyword}
         onSubmitEditing={handleSubmit}
