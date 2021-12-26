@@ -5,6 +5,7 @@ import {MarvelContext} from '../../context/MarvelProvider';
 import {textbyLanguage} from '../../context/actions';
 import styles from './Detail.styles';
 import Heart from '../../components/Heart';
+import ComicCard from './../../components/CharacterCards/ComicCard';
 
 export default function Detail({route}) {
   const {hero} = route.params;
@@ -31,7 +32,6 @@ export default function Detail({route}) {
 
     return <Button color={state.mode==="dark"?"#841584":"#FCBF49"} title={children} onPress={handlePress} />;
   };
-
   return (
     <View style={styles[state.mode].container}>
       <Image
@@ -48,10 +48,12 @@ export default function Detail({route}) {
       <OpenURLButton url={detailsURL}>
         {textbyLanguage('see_details', state.language)}
       </OpenURLButton>
+      <ScrollView horizontal style={{flex:1}}>
       {!comicLoading &&
         comics.map((comic, idx) => {
-          return <Text key={idx}> {comic.title} </Text>;
+          return <ComicCard key={idx} comic = {comic}/>;
         })}
+        </ScrollView>
     </View>
   );
 }

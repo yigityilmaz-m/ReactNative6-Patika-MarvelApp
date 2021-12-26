@@ -13,6 +13,7 @@ import I18n from '../lang/_i18n';
 import {useColorScheme} from 'react-native';
 import {MarvelContext} from '../context/MarvelProvider';
 import {getLanguage, textbyLanguage , setMode , getFavoritedHeroesList} from '../context/actions';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Tab = createBottomTabNavigator();
 
@@ -34,17 +35,24 @@ export default function Navigation() {
         <Tab.Screen
           name={routes.FAVORITES_PAGE}
           component={Favorites}
-          options={{ title: textbyLanguage(routes.FAVORITES_PAGE , state.language) }}
-        />
+          options={{ title: textbyLanguage(routes.FAVORITES_PAGE , state.language) ,  tabBarIcon:()=>(  
+            <Icon name="favorite" color={state.mode === 'dark' ? "#eee" : "#2f2f2f"}  size={25}/>  
+        )  
+       }}
+       />
         <Tab.Screen
           name={routes.HERO_STACK}
           component={HeroStack}
-          options={{headerShown: false , title: textbyLanguage(routes.HERO_STACK , state.language)}}
+          options={{headerShown: false , title: textbyLanguage(routes.HERO_STACK , state.language)  ,  tabBarIcon:()=>(  
+            <Icon name="person" color={state.mode === 'dark' ? "#eee" : "#2f2f2f"}  size={25}/>  
+        )}}
         />
         <Tab.Screen
           name={routes.SETTINGS_PAGE}
           component={Settings}
-          options={{ title: textbyLanguage(routes.SETTINGS_PAGE , state.language) }}
+          options={{ title: textbyLanguage(routes.SETTINGS_PAGE , state.language)  ,  tabBarIcon:()=>(  
+            <Icon name="settings" color={state.mode === 'dark' ? "#eee" : "#2f2f2f"}  size={25}/>  
+        ) }}
 
         />
       </Tab.Navigator>
