@@ -7,7 +7,8 @@ const de = {
   search_placeholder: 'Suche einen Helden',
   select_language: 'Sprache auswählen',
   add_to_favorites: 'Zu den Favoriten hinzufügen',
+  see_details: 'Siehe Einzelheiten',
+  light_mode: 'Lichtmodus',
   dark_mode: 'Dunkelmodus',
-  light_mode: 'Lichtmodus'
 };
 export default de;

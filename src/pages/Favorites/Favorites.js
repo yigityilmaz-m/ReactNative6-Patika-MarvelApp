@@ -24,6 +24,8 @@ export default function Favorites() {
           data={state.favoriteHeroes}
           renderItem={renderFavorite}
           keyExtractor={item => item.id}
+          initialNumToRender={6}
+
         />
       )}
     </View>

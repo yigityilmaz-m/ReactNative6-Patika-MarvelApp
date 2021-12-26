@@ -1,25 +1,35 @@
-import React, {useState} from 'react';
-import {TextInput , View} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {TextInput, View} from 'react-native';
 import styles from './Search.styles';
-import I18n from '../../lang/_i18n'
+import {textbyLanguage} from './../../context/actions';
+import { MarvelContext } from '../../context/MarvelProvider';
 
 
-export default function Search({setSearchValue ,  searchValue  , handleHeroSearch}) {
+export default function Search({ fetchHeroes}) {
+  const [keyword, setKeyword] = useState('');
+  const {state} = useContext(MarvelContext)
 
-  const handleChangeText = (text) => {
-    setSearchValue(text)
-  }
-  const handleSumbmit = () => {
+  const handleSubmit = () => {
     handleHeroSearch()
+  };
+
+  function handleHeroSearch() {
+    const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${keyword}&orderBy=name&ts=100&apikey=19f6801ac64190c329f1fa52d50debb9&hash=10057e70e0a2ae9b702782a71cd5cf8a`;
+    if (keyword === '') {
+      fetchHeroes();
+      return;
+    }
+    fetchHeroes(url);
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles[state.mode].container}>
       <TextInput
-        placeholder={I18n.t('search_placeholder')}
-        onChangeText={handleChangeText}
-        onSubmitEditing={handleSumbmit}
-        value={searchValue}
+      style={styles[state.mode].textInputStyle}
+        placeholder={textbyLanguage('search_placeholder', state.language)}
+        value={keyword}
+        onChangeText={setKeyword}
+        onSubmitEditing={handleSubmit}
       />
     </View>
   );

@@ -1,11 +1,27 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  light: {
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 5,
+    },
+
+    textStyle: {
+      color: '#2f2f2f',
+    },
   },
-  dark: {textStyle: {color: '#EEEEEE'}},
-  light: {textStyle: {color: '#2F2F2F'}},
+  dark: {
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 5,
+    },
+    textStyle: {
+      color: '#fff',
+    },
+  },
 });

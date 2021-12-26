@@ -7,7 +7,8 @@ const tr = {
   search_placeholder: 'Kahraman Ara',
   select_language: 'Dil Seçiniz',
   add_to_favorites: 'Favorilere Ekle',
-  dark_mode: 'Koyu Mod',
-  light_mode: 'Açık Mod'
+  see_details: 'Detaylara Git',
+  light_mode: 'Aydınlık Mod',
+  dark_mode: 'Karanlık Mod',
 };
 export default tr;

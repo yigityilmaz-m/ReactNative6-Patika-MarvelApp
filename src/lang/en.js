@@ -7,7 +7,8 @@ const en = {
   search_placeholder: 'Search a Hero',
   select_language: 'Select Language',
   add_to_favorites: 'Add to Favorites',
-  dark_mode: 'Dark Mode',
+  see_details: 'See Details',
   light_mode: 'Light Mode',
+  dark_mode: 'Dark Mode',
 };
 export default en;

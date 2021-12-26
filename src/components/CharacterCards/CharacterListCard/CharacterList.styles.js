@@ -34,9 +34,7 @@ export default StyleSheet.create({
       color: '#EEEEEE',
     },
 
-    heartStyle: {
-      color: '#D32F2F',
-    },
+  
   },
   dark: {
     imageStyle: {
@@ -69,8 +67,6 @@ export default StyleSheet.create({
       color: '#2F2F2F',
     },
 
-    heartStyle: {
-      color: '#D32F2F',
-    },
+
   },
 });
