@@ -21,7 +21,7 @@ export default function List() {
   const {fetchHeroes, heroLoading, heroes} = useHeroData();
 
   function handleHeroSearch() {
-    const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=efcbf1c5b56e5c77cf9bb79cb4a164be&hash=8ad8de2dec0d80436a3ec5414494217c`;
+    const url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchValue}&orderBy=name&ts=100&apikey=19f6801ac64190c329f1fa52d50debb9&hash=10057e70e0a2ae9b702782a71cd5cf8a`;
     if (searchValue === '') {
       fetchHeroes();
       return;
