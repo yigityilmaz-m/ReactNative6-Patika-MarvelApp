@@ -9,6 +9,8 @@ import Search from './../../components/Search/Search';
 import LottieView from 'lottie-react-native';
 import styles from './List.styles'
 import { MarvelContext } from './../../context/MarvelProvider';
+import {textbyLanguage} from '../../context/actions';
+
 export default function List() {
   const navigation = useNavigation();
 
@@ -39,8 +41,9 @@ export default function List() {
       {!heroLoading ? (
         <View style={styles.container}>
           <TextInput
-          style={styles.searchStyles}
-            placeholder={I18n.t('search_placeholder')}
+          style={styles[state.mode].searchStyles}
+            placeholder={textbyLanguage('search_placeholder', state.language)}
+            placeholderTextColor={state.mode==="dark"? '#EEEEEE' : '#2F2F2F'}
             onChangeText={setSearchValue}
             onSubmitEditing={handleHeroSearch}
             value={searchValue}
