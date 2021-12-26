@@ -8,5 +8,7 @@ const tr = {
   select_language: 'Dil Seçiniz',
   add_to_favorites: 'Favorilere Ekle',
   see_details: 'Detaylara Git',
+  light_mode: 'Aydınlık Mod',
+  dark_mode: 'Karanlık Mod',
 };
 export default tr;

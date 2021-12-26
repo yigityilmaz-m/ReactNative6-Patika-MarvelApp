@@ -5,7 +5,7 @@ import I18n from '../../../lang/_i18n';
 import { MarvelContext } from '../../../context/MarvelProvider';
 import { setLanguage } from '../../../context/actions';
 import { textbyLanguage } from '../../../context/actions';
-
+import styles from './LanguageSelection.styles'
 
 export default function LanguageSelection() {
 
@@ -26,11 +26,11 @@ export default function LanguageSelection() {
    }
 
 
-    console.log(value)
     return (
-      <View>
-        <Text>{textbyLanguage("select_language",state.language)}</Text>
+      <View style={styles[state.mode].container}>
+        <Text style={styles[state.mode].textStyles}>{textbyLanguage("select_language",state.language)}</Text>
         <DropDownPicker
+        style={styles[state.mode].selectionStyle}
         open={open}
         value={value}
         items={items}

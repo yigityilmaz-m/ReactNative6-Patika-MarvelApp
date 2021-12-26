@@ -1,9 +1,27 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  light: {
     container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-      }
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 5,
+    },
+
+    textStyle: {
+      color: '#2f2f2f',
+    },
+  },
+  dark: {
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 5,
+    },
+    textStyle: {
+      color: '#fff',
+    },
+  },
 });

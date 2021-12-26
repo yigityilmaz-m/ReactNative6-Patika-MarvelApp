@@ -8,5 +8,7 @@ const de = {
   select_language: 'Sprache auswählen',
   add_to_favorites: 'Zu den Favoriten hinzufügen',
   see_details: 'Siehe Einzelheiten',
+  light_mode: 'Lichtmodus',
+  dark_mode: 'Dunkelmodus',
 };
 export default de;
