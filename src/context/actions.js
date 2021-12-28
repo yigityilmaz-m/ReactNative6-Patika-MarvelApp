@@ -198,7 +198,7 @@ export const setFavoriteComicList = (comic, dispatch) => {
         let filtered = updatedFavorites.filter(favoritedComic => {
           return favoritedComic.id !== comic.id;
         });
-        dispatch(setFavoritecomicsToState(filtered));
+        dispatch(setFavoriteComicsToState(filtered));
         storeComicData(filtered);
       }
     }

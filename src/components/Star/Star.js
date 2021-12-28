@@ -15,7 +15,7 @@ export default function Star({ comic }) {
     setIsFavoritedComic(prevState => !prevState);
   };
   useEffect(() => {
-    setIsFavoritedComic(true/* isFavorited(comic, state.favoriteComics) */);
+    setIsFavoritedComic(isFavorited(comic, state.favoriteComics));
   }, []);
 
   return (
