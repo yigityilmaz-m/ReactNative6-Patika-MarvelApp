@@ -6,6 +6,7 @@ import styles from './Favorites.styles';
 import FavoriteCard from '../../components/CharacterCards/FavoriteCard';
 import routes from '../../Navigation/routes';
 import { useNavigation } from '@react-navigation/core';
+import { textbyLanguage } from './../../context/actions';
 
 
 export default function Favorites() {
@@ -41,7 +42,7 @@ export default function Favorites() {
         )}
       </View>
       <View style={styles.buttonPosition}>
-        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title='Comics' onPress={() => navigation.navigate(routes.FAVORITE_COMICS_PAGE)} />
+        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title={textbyLanguage('comics',state.language)} onPress={() => navigation.navigate(routes.FAVORITE_COMICS_PAGE)} />
       </View>
     </View>
   );

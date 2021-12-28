@@ -6,6 +6,7 @@ import styles from './FavoriteComics.styles';
 import routes from '../../Navigation/routes';
 import { useNavigation } from '@react-navigation/native';
 import FavoriteComicCard from '../../components/CharacterCards/FavoriteComicCard';
+import { textbyLanguage } from '../../context/actions';
 
 export default function FavoriteComics() {
   const { state } = useContext(MarvelContext);
@@ -35,7 +36,7 @@ export default function FavoriteComics() {
       )}
       </View>
       <View style={styles.buttonPosition}>
-        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title='Heroes' onPress={() => navigation.navigate(routes.FAVORITES_PAGE)} />
+        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title={textbyLanguage('heroes',state.language)} onPress={() => navigation.navigate(routes.FAVORITES_PAGE)} />
       </View>
 
     </View>

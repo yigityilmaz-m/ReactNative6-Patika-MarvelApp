@@ -4,6 +4,7 @@ import styles from './ComicDetail.styles';
 import { MarvelContext } from '../../context/MarvelProvider';
 import Star from '../../components/Star'
 import { textbyLanguage } from '../../context/actions';
+import OpenURLButton from '../../components/OpenURLButton';
 
 export default function ComicDetail({ route }) {
   const { state } = useContext(MarvelContext);
@@ -12,6 +13,8 @@ export default function ComicDetail({ route }) {
   const [comicImageUrl] = useState(
     `${comic.thumbnail.path + '.' + comic.thumbnail.extension}`,
   );
+
+  const [detailsURL] = useState(`${comic.urls[0].url}`);
   return (
     <View style={styles[state.mode].container}>
       <Image
@@ -32,6 +35,9 @@ export default function ComicDetail({ route }) {
           {comic.prices[0].price}$
         </Text>
       </View>
+      <OpenURLButton url={detailsURL}>
+        {textbyLanguage('see_details', state.language)}
+      </OpenURLButton>
       <View>
         <Text style={styles[state.mode].titleStyle}>{textbyLanguage('characters', state.language)}</Text>
         {comic.characters.items.map((char, idx) => (

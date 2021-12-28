@@ -6,6 +6,7 @@ import {textbyLanguage} from '../../context/actions';
 import styles from './Detail.styles';
 import Heart from '../../components/Heart';
 import ComicCard from './../../components/CharacterCards/ComicCard';
+import OpenURLButton from '../../components/OpenURLButton';
 
 export default function Detail({route}) {
   const {hero} = route.params;
@@ -19,25 +20,25 @@ export default function Detail({route}) {
     `${hero.thumbnail.path + '.' + hero.thumbnail.extension}`,
   );
 
-  const OpenURLButton = ({url, children}) => {
-    const handlePress = useCallback(async () => {
-      const supported = await Linking.canOpenURL(url);
+  // const OpenURLButton = ({url, children}) => {
+  //   const handlePress = useCallback(async () => {
+  //     const supported = await Linking.canOpenURL(url);
 
-      if (supported) {
-        await Linking.openURL(url);
-      } else {
-        Alert.alert(`Don't know how to open this URL: ${url}`);
-      }
-    }, [url]);
+  //     if (supported) {
+  //       await Linking.openURL(url);
+  //     } else {
+  //       Alert.alert(`Don't know how to open this URL: ${url}`);
+  //     }
+  //   }, [url]);
 
-    return (
-      <Button
-        color={state.mode === 'dark' ? '#841584' : '#FCBF49'}
-        title={children}
-        onPress={handlePress}
-      />
-    );
-  };
+  //   return (
+  //     <Button
+  //       color={state.mode === 'dark' ? '#841584' : '#FCBF49'}
+  //       title={children}
+  //       onPress={handlePress}
+  //     />
+  //   );
+  // };
   return (
     <View style={styles[state.mode].container}>
       <Image

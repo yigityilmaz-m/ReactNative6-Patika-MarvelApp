@@ -15,6 +15,7 @@ const de = {
   page: 'Seiten',
   price: 'Preis',
   characters:'Charaktere',
-  favorite_heroes:'Favoriten Helden'
+  favorite_heroes:'Favoriten Helden',
+  comics: 'Comics',
 };
 export default de;

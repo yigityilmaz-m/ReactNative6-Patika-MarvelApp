@@ -15,6 +15,7 @@ const en = {
   page: 'Page',
   price: 'Price',
   characters:'Characters',
-  favorite_heroes:'Favorite Heroes'
+  favorite_heroes:'Favorite Heroes',
+  comics: 'Comics',
 };
 export default en;
