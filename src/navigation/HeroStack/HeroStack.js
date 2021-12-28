@@ -13,7 +13,7 @@ export default function HeroStack() {
   const {state} = useContext(MarvelContext);
 
   return (
-    <Stack.Navigator options={{headerShown: false}}>
+    <Stack.Navigator options={{headerShown: false}} >
       <Stack.Screen
         name={routes.LIST_PAGE}
         component={List}
