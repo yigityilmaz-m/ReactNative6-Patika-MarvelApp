@@ -23,23 +23,24 @@ export default StyleSheet.create({
       height: '100%',
       width: '65%',
       padding: 5,
-      alignItems: 'center',
+      alignItems: 'flex-start',
+      paddingVertical: 10
 
     },
     titleStyle: {
-      flex: 1,
+      flex: 2,
       fontSize: 15,
       fontWeight: 'bold',
       color: '#EEEEEE'
     },
     descriptionStyle: {
-      flex: 2,
+      flex: 1,
       fontSize: 10,
       color: '#EEEEEE',
-      textAlign: 'justify',
-      marginHorizontal: 5
+
+
     },
-    heartContainerStyle: {
+    starContainerStyle: {
       width: '10%',
       height: '100%',
       flex: 1,
@@ -71,11 +72,11 @@ export default StyleSheet.create({
       height: '100%',
       width: '65%',
       padding: 5,
-      alignItems: 'center',
-
+      alignItems: 'flex-start',
+      paddingVertical: 10
     },
     titleStyle: {
-      flex: 1,
+      flex: 2,
       fontSize: 15,
       fontWeight: 'bold',
       color: '#2F2F2F'
@@ -84,10 +85,8 @@ export default StyleSheet.create({
       flex: 1,
       fontSize: 10,
       color: '#2F2F2F',
-      textAlign: 'justify',
-      marginHorizontal: 5
     },
-    heartContainerStyle: {
+    starContainerStyle: {
       width: '10%',
       height: '100%',
       flex: 1,

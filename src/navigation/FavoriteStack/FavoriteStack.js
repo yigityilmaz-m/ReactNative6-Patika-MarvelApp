@@ -16,12 +16,12 @@ export default function FavoriteStack() {
       <Stack.Screen
         name={routes.FAVORITES_PAGE}
         component={Favorites}
-        options={{ headerShown: false, title: textbyLanguage(routes.FAVORITES_PAGE, state.language) }}
+        options={{ title: textbyLanguage(routes.FAVORITES_PAGE, state.language) }}
       />
       <Stack.Screen
         name={routes.FAVORITE_COMICS_PAGE}
         component={FavoriteComics}
-        options={{ title: textbyLanguage(routes.FAVORITE_COMICS_PAGE, state.language) }}
+        options={{ headerBackVisible:false, title: textbyLanguage(routes.FAVORITE_COMICS_PAGE, state.language) }}
       />
     </Stack.Navigator>
   );

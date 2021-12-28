@@ -3,7 +3,7 @@
 export default {
   LIST_PAGE: "heroList",
   DETAIL_PAGE: "hero_detail",
-  FAVORITES_PAGE: "favorites_heroes",
+  FAVORITES_PAGE: "favorite_heroes",
   SETTINGS_PAGE: "settings",
   HERO_STACK: "heroes",
   COMIC_DETAIL: "comic_detail",

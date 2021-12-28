@@ -11,7 +11,10 @@ const tr = {
   light_mode: 'Aydınlık Mod',
   dark_mode: 'Karanlık Mod',
   comic_detail: 'Çizgi Roman',
-  favorite_comics: 'Favori Çizgiromanlar'
-
+  favorite_comics: 'Favori Çizgiromanlar',
+  page: 'Sayfa Sayısı',
+  price: 'Fiyat',
+  characters:'Karakterler',
+  favorite_heroes:'Favori Kahramanlar'
 };
 export default tr;

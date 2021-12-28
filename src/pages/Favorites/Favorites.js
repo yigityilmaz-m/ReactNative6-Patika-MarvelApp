@@ -20,25 +20,29 @@ export default function Favorites() {
   } */
   return (
     <View style={styles.container}>
-      <Button title='button' onPress={() => navigation.navigate(routes.FAVORITE_COMICS_PAGE)} />
-      {state.favoriteHeroes.length === 0 ? (
-        <LottieView
-          style={styles.lottie}
-          source={require('../../assets/empty.json')}
-          autoPlay
-          loop
-        />
-      ) : (
+      <View style={styles.container}>
+        {state.favoriteHeroes.length === 0 ? (
+          <LottieView
+            style={styles.lottie}
+            source={require('../../assets/empty.json')}
+            autoPlay
+            loop
+          />
+        ) : (
 
-        <FlatList
-          style={styles.container}
-          data={state.favoriteHeroes}
-          renderItem={renderFavorite}
-          keyExtractor={item => item.id}
-          initialNumToRender={6}
+          <FlatList
+            style={styles.container}
+            data={state.favoriteHeroes}
+            renderItem={renderFavorite}
+            keyExtractor={item => item.id}
+            initialNumToRender={6}
 
-        />
-      )}
+          />
+        )}
+      </View>
+      <View style={styles.buttonPosition}>
+        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title='Comics' onPress={() => navigation.navigate(routes.FAVORITE_COMICS_PAGE)} />
+      </View>
     </View>
   );
 }

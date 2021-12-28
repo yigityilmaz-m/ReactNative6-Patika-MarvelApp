@@ -3,19 +3,19 @@ import { View, Text, FlatList, Button } from 'react-native';
 import { MarvelContext } from '../../context/MarvelProvider';
 import LottieView from 'lottie-react-native';
 import styles from './FavoriteComics.styles';
-import FavoriteCard from '../../components/CharacterCards/FavoriteCard';
 import routes from '../../Navigation/routes';
 import { useNavigation } from '@react-navigation/native';
+import FavoriteComicCard from '../../components/CharacterCards/FavoriteComicCard';
 
 export default function FavoriteComics() {
   const { state } = useContext(MarvelContext);
   const navigation = useNavigation()
 
-  const renderFavorite = ({ item }) => (<Text>{item.id}</Text>);
+  const renderFavorite = ({ item }) => (<FavoriteComicCard comic={item} mode={state.mode}/>);
 
   return (
     <View style={styles.container}>
-      <Button title='button' onPress={() => navigation.navigate(routes.FAVORITES_PAGE)} />
+      <View style={styles.container}>
       {state.favoriteComics.length === 0 ? (
         <LottieView
           style={styles.lottie}
@@ -33,6 +33,10 @@ export default function FavoriteComics() {
 
         />
       )}
+      </View>
+      <View style={styles.buttonPosition}>
+        <Button style={styles.buttonStyles} color={state.mode === 'dark' ? '#841584' : '#FCBF49'} title='Heroes' onPress={() => navigation.navigate(routes.FAVORITES_PAGE)} />
+      </View>
 
     </View>
   );

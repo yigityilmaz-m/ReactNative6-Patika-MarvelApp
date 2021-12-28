@@ -36,7 +36,8 @@ export default function Navigation() {
           name={routes.FAVORITES_STACK}
           component={FavoriteStack}
           options={{
-             title: textbyLanguage(routes.FAVORITES_STACK, state.language), tabBarIcon: () => (
+            headerShown: false,
+            title: textbyLanguage(routes.FAVORITES_STACK, state.language), tabBarIcon: () => (
               <Icon name="favorite" color={state.mode === 'dark' ? "#eee" : "#2f2f2f"} size={25} />
             )
           }}
