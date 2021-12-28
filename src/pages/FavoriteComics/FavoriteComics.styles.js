@@ -22,5 +22,8 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 50,
+
     }
+
+
 });

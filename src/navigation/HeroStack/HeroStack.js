@@ -5,7 +5,7 @@ import Detail from '../../pages/Detail';
 import routes from '../routes';
 import {MarvelContext} from '../../context/MarvelProvider';
 import {textbyLanguage} from '../../context/actions';
-import ComicDetail from '../../pages/ComicDetail/';
+import ComicDetail from '../../pages/ComicDetail';
 
 const Stack = createNativeStackNavigator();
 

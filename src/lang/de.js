@@ -11,5 +11,11 @@ const de = {
   light_mode: 'Lichtmodus',
   dark_mode: 'Dunkelmodus',
   comic_detail: 'Comic Detailen',
+  favorite_comics: 'Favoriten Comics',
+  page: 'Seiten',
+  price: 'Preis',
+  characters:'Charaktere',
+  favorite_heroes:'Favoriten Helden',
+  comics: 'Comics',
 };
 export default de;

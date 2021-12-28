@@ -17,9 +17,10 @@ const storeHeroData = async value => {
   }
 };
 export async function getHeroData() {
+  const newArr=[]
   try {
     let jsonValue = await AsyncStorage.getItem('@FavoritedHeroes');
-    return jsonValue === null ? null : JSON.parse(jsonValue);
+    return jsonValue === null ? newArr : JSON.parse(jsonValue);
   } catch (error) {
     setErrorData(error);
   }
@@ -34,9 +35,10 @@ const storeComicData = async value => {
   }
 };
 export async function getComicData() {
+  const newArr=[]
   try {
     let jsonValue = await AsyncStorage.getItem('@FavoritedComics');
-    return jsonValue === null ? null : JSON.parse(jsonValue);
+    return jsonValue === null ? newArr : JSON.parse(jsonValue);
   } catch (error) {
     setErrorData(error);
   }
@@ -194,9 +196,9 @@ export const setFavoriteComicList = (comic, dispatch) => {
       } else {
         let updatedFavorites = [...favoriteComicList];
         let filtered = updatedFavorites.filter(favoritedComic => {
-          return favoritedComic.id !== hero.id;
+          return favoritedComic.id !== comic.id;
         });
-        dispatch(setFavoritecomicsToState(filtered));
+        dispatch(setFavoriteComicsToState(filtered));
         storeComicData(filtered);
       }
     }
@@ -240,8 +242,8 @@ export const textbyLanguage = (title, language) => {
   return I18n.t(`${title}`, language === 'system' ? {} : {locale: language});
 };
 
-export const isFavorited = (hero , favoritedHeroes) => {
-  return favoritedHeroes.length > 0  ? (favoritedHeroes.findIndex((favHero)=> (favHero.id === hero.id))>=0?true:false):false
+export const isFavorited = (item , itemArray) => {
+  return itemArray.length > 0  ? (itemArray.findIndex((favItem)=> (favItem.id === item.id))>=0?true:false):false
 };
 
 export const setMode = (mode, dispatch) => {
