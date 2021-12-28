@@ -1,12 +1,12 @@
-import React, {useState, useContext , useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {setFavoriteHeroList} from '../../context/actions';
+import { setFavoriteHeroList } from '../../context/actions';
 import styles from './Heart.styles';
-import {MarvelContext} from '../../context/MarvelProvider';
-import {isFavorited} from '../../context/actions';
+import { MarvelContext } from '../../context/MarvelProvider';
+import { isFavorited } from '../../context/actions';
 
-export default function Heart({hero}) {
-  const {state, dispatch} = useContext(MarvelContext);
+export default function Heart({ hero }) {
+  const { state, dispatch } = useContext(MarvelContext);
 
   const [isFavoritedHero, setIsFavoritedHero] = useState(false);
 

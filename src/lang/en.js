@@ -11,5 +11,6 @@ const en = {
   light_mode: 'Light Mode',
   dark_mode: 'Dark Mode',
   comic_detail: 'Comic Detail',
+  favorite_comics: 'Favorite Comics'
 };
 export default en;

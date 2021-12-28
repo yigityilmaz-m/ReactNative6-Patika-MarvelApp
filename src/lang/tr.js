@@ -11,5 +11,7 @@ const tr = {
   light_mode: 'Aydınlık Mod',
   dark_mode: 'Karanlık Mod',
   comic_detail: 'Çizgi Roman',
+  favorite_comics: 'Favori Çizgiromanlar'
+
 };
 export default tr;

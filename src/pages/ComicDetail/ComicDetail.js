@@ -1,11 +1,12 @@
-import React, {useState, useContext} from 'react';
-import {View, Text, Image} from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, Image } from 'react-native';
 import styles from './ComicDetail.styles';
-import {MarvelContext} from '../../context/MarvelProvider';
+import { MarvelContext } from '../../context/MarvelProvider';
+import Star from '../../components/Star'
 
-export default function ComicDetail({route}) {
-  const {state} = useContext(MarvelContext);
-  const {comic} = route.params;
+export default function ComicDetail({ route }) {
+  const { state } = useContext(MarvelContext);
+  const { comic } = route.params;
 
   const [comicImageUrl] = useState(
     `${comic.thumbnail.path + '.' + comic.thumbnail.extension}`,
@@ -14,9 +15,10 @@ export default function ComicDetail({route}) {
     <View style={styles[state.mode].container}>
       <Image
         style={styles[state.mode].imageStyle}
-        source={{uri: comicImageUrl}}
+        source={{ uri: comicImageUrl }}
       />
-      <Text style={styles[state.mode].titleStyle}>{comic.title}</Text>
+      <View style={styles[state.mode].hearderStyle}><Text style={styles[state.mode].titleStyle}>{comic.title}</Text>{state.favoriteComics && <Star comic={comic} />}</View>
+
       <View style={styles[state.mode].viewStyle}>
         <Text style={styles[state.mode].titleStyle}>Page:</Text>
         <Text style={styles[state.mode].descriptionStyle}>
@@ -37,7 +39,7 @@ export default function ComicDetail({route}) {
           </Text>
         ))}
       </View>
-   
+
     </View>
   );
 }
