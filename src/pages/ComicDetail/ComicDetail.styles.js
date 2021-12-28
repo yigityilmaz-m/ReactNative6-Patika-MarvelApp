@@ -39,6 +39,9 @@ export default StyleSheet.create({
       paddingRight: 20,
       marginVertical: 10,
     },
+    scrollViewStyle: {
+      flex: 1,
+    }
   },
   dark: {
     container: {
@@ -79,5 +82,8 @@ export default StyleSheet.create({
       paddingRight: 20,
       marginVertical: 10,
     },
+    scrollViewStyle: {
+      flex: 1,
+    }
   },
 })
